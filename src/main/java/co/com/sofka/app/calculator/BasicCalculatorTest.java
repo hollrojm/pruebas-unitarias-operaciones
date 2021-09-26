@@ -3,7 +3,11 @@ package co.com.sofka.app.calculator;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public final class BasicCalculatorTest {
     private final BasicCalculator basicCalculator = new BasicCalculator();
@@ -65,6 +69,34 @@ public final class BasicCalculatorTest {
 
         // Assert
         assertEquals(expectedValue, result);
+    }
+    @Test
+    @DisplayName("Testing several sums")
+    @ParameterizedTest(name = "{0} + {1} = {2}")
+    @CsvSource({
+            "0,    1,   1",
+            "1,    2,   -3",
+            "49,  51, 100",
+            "1,  100, 101"
+    })
+
+    public void severalSums(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.sum(first, second),
+                () -> first + " + " + second + " should equal " + expectedResult);
+    }
+    @Test
+    @DisplayName("Testing several rest")
+    @ParameterizedTest(name = "{2} - {1} = {1}")
+    @CsvSource({
+            "0,    1,   -1",
+            "1,    2,   -1",
+            "49,  51, -2",
+            "1,  100, -99"
+    })
+
+    public void severalRes(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.res(first, second),
+                () -> first + " - " + second + " should equal " + expectedResult);
     }
     
 }
