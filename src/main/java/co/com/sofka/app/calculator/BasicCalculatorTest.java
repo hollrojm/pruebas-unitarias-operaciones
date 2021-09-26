@@ -98,5 +98,33 @@ public final class BasicCalculatorTest {
         assertEquals(expectedResult, basicCalculator.res(first, second),
                 () -> first + " - " + second + " should equal " + expectedResult);
     }
+    @Test
+    @DisplayName("Testing several rest")
+    @ParameterizedTest(name = "{2} * {1} = {2}")
+    @CsvSource({
+            "0,    1,   0",
+            "1,    2,   2",
+            "49,  51, 2499",
+            "1,  100, 100"
+    })
+
+    public void severalMultiplicacion(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.multiplicacion(first, second),
+                () -> first + " * " + second + " should equal " + expectedResult);
+    }
+    @Test
+    @DisplayName("Testing several rest")
+    @ParameterizedTest(name = "{2} / {1} = {2}")
+    @CsvSource({
+            "10,   1,   10",
+            "5,    2,   10",
+            "3,    3,    9",
+            "0,   100,   0"
+    })
+
+    public void severalDivision(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.multiplicacion(first, second),
+                () -> first + " * " + second + " should equal " + expectedResult);
+    }
     
 }
