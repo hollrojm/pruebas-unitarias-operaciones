@@ -36,5 +36,35 @@ public final class BasicCalculatorTest {
         // Assert
         assertEquals(expectedValue, result);
     }
+    @Test
+    @DisplayName("Testing res: 2*2=4")
+    public void multiplicacion() {
+        // Arrange
+        Long number1 = 2L;
+        Long number2 = 2L;
+        Long expectedValue = 4L;
+
+        // Act
+        Long result = basicCalculator.multiplicacion(number1, number2);
+
+
+        // Assert
+        assertEquals(expectedValue, result);
+    }
+    @Test
+    @DisplayName("Testing division: 2/1=1")
+    public void division() {
+        // Arrange
+        Double number1 = Double.valueOf(7L);;
+        Double number2 = Double.valueOf(3L);;
+        Double expectedValue = Double.valueOf(2.3333333333333335);
+
+        // Act
+        Double result = basicCalculator.division(number1, number2);
+
+
+        // Assert
+        assertEquals(expectedValue, result);
+    }
     
 }

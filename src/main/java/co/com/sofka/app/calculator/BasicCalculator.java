@@ -19,8 +19,11 @@ public final class BasicCalculator {
         logger.info( "Summing {} * {}", number1, number2 );
         return number1 * number2;
     }
-    public Long division(Long number1, Long number2) {
+    public Double division(Double number1, Double number2) {
         logger.info( "Summing {} / {}", number1, number2 );
-        return number1 % number2;
+        if(number2 == 0)  {
+            throw new RuntimeException("No es posible dividir entre 0");
+        }
+        return number1 / number2;
     }
 }
